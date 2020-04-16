@@ -1,0 +1,60 @@
+{% extends "pointsAppDir/base.html" %}
+
+{% block content %}
+
+ <div class="page-header">
+   <h1>Members List Page</h1>
+ </div>
+
+
+ <table class="table table-borderless">    
+    <tablehead class="border-bottom font_weight-bold"> 
+      <tr>
+         <td> Id </td>
+         <td> First Name </td>
+         <td> Last Name </td>
+         <td> Email  </td>
+       
+         <!-- INSERT button on List - takes you back to FORM page to insert -->
+         <td> <a href="{% url 'member_insert' %}" class"btn btn-outline-success">
+                <i class="fas fa-plus"></i> Add New
+              </a>
+         </td>
+
+      </tr>
+    </tablehead>
+
+    <tabledetail>
+      {% for member in member_list %}
+         <tr>
+           <td> {{member.id}} </td>
+           <td> {{member.member_firstname}} </td>
+           <td> {{member.member_lastname}} </td>
+           <td> {{member.member_email}} </td>
+
+           <!-- EDIT button on List - takes you back to FORM page with current_member.id to update -->
+           <td> <a href="{% url 'member_update' member.id %}" class"btn text-secondary px-0">
+                  <i class="far fa-edit fa-lg"></i>
+                </a>
+           </td>
+
+           <td>
+           <!-- DELETE button on List  -->
+             <form action="{% url 'member_delete' member.id %}" method="post" class="d-inline">
+               {% csrf_token %}
+               <button type="submit" class="btn">
+                 <i class="far fa-trash-alt fa-lg text-danger float-right"></i>  <!-- text-danger just means red -->
+               </button>
+             </form>
+
+            </td>
+
+         </tr>
+
+       {% endfor %}
+
+    </tabledetail>
+
+   </table>
+
+{% endblock content %}

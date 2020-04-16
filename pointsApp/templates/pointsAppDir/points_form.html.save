@@ -1,0 +1,44 @@
+{% extends "pointsAppDir/base.html" %}
+{% load crispy_forms_tags %}
+
+<!-- maps to block content in base.html - so that this is placed inside there -->
+{% block content %}
+
+  <div class="page-header">
+    <h1>Points Add Page</h1>
+  </div>
+
+  <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-md-6">
+        {{form.member_id|as_crispy_field}}
+      </div>
+
+      <div class="col-md-6">
+        {{form.resort_num_id|as_crispy_field}}
+      </div>
+    </div>
+
+    {{form.resv_begin_date|as_crispy_field}}
+    {{form.resv_end_date|as_crispy_field}}
+    {{form.elig_rev|as_crispy_field}}
+    {{form.base_points|as_crispy_field}}
+    {{form.bonus_points|as_crispy_field}}
+
+    <div class="row">
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i> Submit</button>
+      </div>
+     
+      <div class="col-md-4">
+         <a href="{% url 'point_list' %}" class="btn btn-success btn-block btn-lg">
+           <i class="fas fa_stream"></i> Back to List
+         </a>
+      </div>
+    </div>
+
+  </form>
+
+{% endblock content %}

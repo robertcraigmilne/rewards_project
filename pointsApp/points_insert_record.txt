@@ -1,0 +1,6 @@
+INSERT INTO "pointsApp_points"(member_id, resort_num_id, resv_begin_date, resv_end_date, elig_rev, base_points,  bonus_points) 
+VALUES (4,1,'2020-04-14','2020-04-15', 200, 2000, 50);
+
+commit;
+
+It auto does the sequence for 'id'

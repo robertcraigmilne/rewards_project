@@ -1,0 +1,6 @@
+{% extends "pointsAppDir/base.html" %}
+
+<!-- maps to block content in base.html - so that this is placed inside there -->
+{% block content %}
+<p> This will show a LIST of Members from  member table and then allow for Update and Delete </p>
+{% endblock content %}

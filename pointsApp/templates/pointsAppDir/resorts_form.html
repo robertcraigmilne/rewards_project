@@ -1,0 +1,43 @@
+{% extends "pointsAppDir/base.html" %}
+{% load crispy_forms_tags %}
+
+<!-- maps to block content in base.html - so that this is placed inside there -->
+{% block content %}
+
+  <div class="page-header">
+    <h1>Resorts Creation Page</h1>
+  </div>
+
+  <form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-md-2">
+        {{form.resort_num|as_crispy_field}}
+      </div>
+
+      <div class="col-md-8">
+        {{form.resort_name|as_crispy_field}}
+      </div>
+      
+      <div class="col-md-2">
+        {{form.resort_aff_pdr_ind|as_crispy_field}}
+      </div>
+   
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i> Submit</button>
+      </div>
+     
+      <div class="col-md-4">
+         <a href="{% url 'resort_list' %}" class="btn btn-success btn-block btn-lg">
+           <i class="fas fa_stream"></i> Back to List
+         </a>
+      </div>
+    </div>
+
+  </form>
+
+{% endblock content %}

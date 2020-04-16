@@ -1,0 +1,51 @@
+{% extends "pointsAppDir/base.html" %}
+
+{% block content %}
+
+ <div class="page-header">
+   <h1>Points List Page</h1>
+ </div>
+
+
+ <table class="table table-borderless">    
+    <tablehead class="border-bottom font_weight-bold"> 
+      <tr>
+         <td> Point Id </td>
+         <td> Member Id </td>
+         <td> Resort Id </td>
+         <td> Resv Begin Date </td>
+         <td> Resv End Date </td>
+         <td> Eligible Revenue </td>
+         <td> Base Points  </td>
+         <td> Bonus Points  </td>
+       
+         <!-- INSERT button on List - takes you back to FORM page to insert -->
+         <td> <a href="{% url 'point_insert' %}" class"btn btn-outline-success">
+                <i class="fas fa-plus"></i> Add New
+              </a>
+         </td>
+
+      </tr>
+    </tablehead>
+
+    <tabledetail>
+      {% for point in point_list %}
+         <tr>
+           <td> {{point.id}} </td>
+           <td> {{point.member_id}} </td>
+           <td> {{point.resort_num_id}} </td>
+           <td> {{point.resv_begin_date}} </td>
+           <td> {{point.resv_end_date}} </td>
+           <td> {{point.elig_rev}} </td>
+           <td> {{point.base_points}} </td>
+           <td> {{point.bonus_points}} </td>
+
+         </tr>
+
+       {% endfor %}
+
+    </tabledetail>
+
+   </table>
+
+{% endblock content %}
